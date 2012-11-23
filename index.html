@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Underscore-php by Anahkiasen</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Underscore-php</h1>
+        <p class="header">A PHP port of Underscore.js</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/Anahkiasen/underscore-php/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/Anahkiasen/underscore-php/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/Anahkiasen/underscore-php">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/Anahkiasen">Anahkiasen</a></p>
+
+
+      </header>
+      <section>
+        <h1>Underscore.php</h1>
+
+<p>Underscore.php is a PHP port of Underscore.js. Its goal is to ease the working and manipulation of arrays, strings and such in PHP. My first goal is to match all of Underscore's methods but I'll probably add more helpers along the way for stuff that people do on a daily basis.
+It can be used both as a static class, and an Object-Oriented class, so both the following are valid :</p>
+
+<div class="highlight"><pre><span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+
+<span class="nx">Underscore</span><span class="o">::</span><span class="na">map</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="p">})</span>
+<span class="nx">underscore</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">map</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="p">})</span>
+</pre></div>
+
+<p>You can also alias Underscore's core classes and call them at any time, this mostly provides syntaxic elegance :</p>
+
+<div class="highlight"><pre><span class="nx">Arrays</span><span class="o">::</span><span class="na">first</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="nx">Collection</span><span class="o">::</span><span class="na">each</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="nx">String</span><span class="o">::</span><span class="na">escape</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+
+<p>It comes with a config file that allows you to alias the main class to whatever you want, the default being <code>Underscore</code> and the most common probably being <code>__</code> (which is already taken in <strong>Laravel</strong> by the translation helper).</p>
+
+<h1>Documentation</h1>
+
+<p><strong>Available classes</strong></p>
+
+<ul>
+<li>
+<a href="#collection">Collection</a> : Helpers for objects and arrays</li>
+</ul><h2>Collection</h2>
+
+<h3>Collection::get</h3>
+
+<p>Get a value from an array using dot-notation</p>
+
+<div class="highlight"><pre><span class="nv">$array</span> <span class="o">=</span> <span class="nx">underscore</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'foo'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">'bar'</span> <span class="o">=&gt;</span> <span class="s1">'ter'</span><span class="p">)));</span>
+<span class="nv">$array</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">'foo.bar'</span><span class="p">)</span> <span class="c1">// Return 'ter'</span>
+</pre></div>
+
+<h3>Collection::each</h3>
+
+<p>Iterate over an array to execute a callback at each loop</p>
+
+<div class="highlight"><pre><span class="nv">$multiplier</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="nx">Underscore</span><span class="o">::</span><span class="na">each</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="k">function</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$multiplier</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">echo</span> <span class="nv">$value</span> <span class="o">*</span> <span class="nv">$multiplier</span><span class="p">;</span> <span class="c1">// Prints out 3, 6, 9</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>Collection::map</h3>
+
+<p>Iterate over an array and apply a callback to each value</p>
+
+<div class="highlight"><pre><span class="nx">Underscore</span><span class="o">::</span><span class="na">map</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="k">function</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nv">$value</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// Return array(3, 6, 9)</span>
+<span class="p">});</span>
+</pre></div>
+
+<h3>Collection::find</h3>
+
+<p>Find the first value in an array that passes a truth test</p>
+
+<div class="highlight"><pre><span class="nx">Underscore</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="k">function</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nv">$value</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// Returns 2</span>
+<span class="p">});</span>
+</pre></div>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
