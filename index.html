@@ -4,53 +4,62 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Underscore-php by Anahkiasen</title>
+
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/main.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-
+    <div class="wrapper">
       <header>
         <h1>Underscore-php</h1>
         <p>A PHP port of Underscore.js</p>
+        <p class="view"><a href="https://github.com/Anahkiasen/underscore-php">View the Project on GitHub <small>Anahkiasen/underscore-php</small></a></p>
+        <ul>
+          <li><a href="https://github.com/Anahkiasen/underscore-php/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/Anahkiasen/underscore-php/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/Anahkiasen/underscore-php">View On <strong>GitHub</strong></a></li>
+        </ul>
       </header>
-
-      <div id="banner">
-        <span id="logo"></span>
-
-        <a href="https://github.com/Anahkiasen/underscore-php" class="button fork"><strong>View On GitHub</strong></a>
-        <div class="downloads">
-          <span>Downloads:</span>
-          <ul>
-            <li><a href="https://github.com/Anahkiasen/underscore-php/zipball/master" class="button">ZIP</a></li>
-            <li><a href="https://github.com/Anahkiasen/underscore-php/tarball/master" class="button">TAR</a></li>
-          </ul>
-        </div>
-      </div><!-- end banner -->
-
-    <div class="wrapper">
-      <nav>
-        <ul></ul>
-      </nav>
       <section>
-        <h1>Underscore.php</h1>
+        <h1>Underscore.php <a href="https://travis-ci.org/Anahkiasen/underscore-php"><img src="https://secure.travis-ci.org/Anahkiasen/underscore-php.png?branch=master" alt="Build Status"></a>
+</h1>
 
 <h2>A redacted port of Underscore.js</h2>
 
-<p>Underscore.php is a <em>redacted</em> PHP port of Underscore.js. Its goal is to ease the working and manipulation of arrays, strings and such in PHP development. When I say redacted I mean that all methods were not just imported and converted blatantly — a lot of thought was put into removing methods that were unuseful to PHP developers, changing terms to make them less confusing in a PHP world, and add a lot of new methods and helpers on top of a new elegant syntax.
-It can be used both as a static class, and an Object-Oriented class, so both the following are valid :</p>
+<p>Underscore.php is a <em>redacted</em> PHP port of Underscore.js. Its goal is to ease the working and manipulation of arrays, strings and such in PHP development. When I say redacted I mean that all methods were not just imported and converted blatantly — a lot of thought was put into removing methods that were unuseful to PHP developers, changing terms to make them less confusing in a PHP world, and add a lot of new methods and helpers on top of a new elegant syntax.</p>
+
+<h3>Install Underscore</h3>
+
+<p>To install Underscore.php you can either add it via Composer :</p>
+
+<pre><code>"anahkiasen/underscore-php" : "dev-master"
+</code></pre>
+
+<p>Or if you're using the Laravel framework, via the Artisan CLI :</p>
+
+<pre><code>artisan bundle:install underscore
+</code></pre>
+
+<p>And then adding the following to your bundles files :</p>
+
+<pre><code>'underscore' =&gt; array('auto' =&gt; true),
+</code></pre>
+
+<h3>Using Underscore</h3>
+
+<p>It can be used both as a static class, and an Object-Oriented class, so both the following are valid :</p>
 
 <div class="highlight"><pre><span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 
 <span class="c1">// One-off calls to helpers</span>
-<span class="nx">Underscore</span><span class="o">::</span><span class="na">map</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="p">})</span>
-<span class="nx">underscore</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">map</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="p">})</span>
+<span class="nx">Underscore</span><span class="o">::</span><span class="na">each</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="p">})</span>
+<span class="nx">underscore</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">each</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="p">})</span>
 
 <span class="c1">// Or chain calls</span>
 <span class="nx">underscore</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">sort</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
@@ -60,12 +69,26 @@ It can be used both as a static class, and an Object-Oriented class, so both the
 <p>You can also alias Underscore's core classes and call them at any time, this mostly provides syntaxic elegance :</p>
 
 <div class="highlight"><pre><span class="c1">// One-off calls</span>
-<span class="nx">Arrays</span><span class="o">::</span><span class="na">first</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="nx">Arrays</span><span class="o">::</span><span class="na">each</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="nx">String</span><span class="o">::</span><span class="na">escape</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="nx">Arrays</span><span class="o">::</span><span class="na">first</span><span class="p">()</span>
+<span class="nx">Object</span><span class="o">::</span><span class="na">methods</span><span class="p">()</span>
+<span class="nx">String</span><span class="o">::</span><span class="na">escape</span><span class="p">()</span>
 
 <span class="c1">// Chained calls</span>
-<span class="nx">Arrays</span><span class="o">::</span><span class="na">from</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nx">Arrays</span><span class="o">::</span><span class="na">from</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">sort</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">toJSON</span><span class="p">()</span>
+</pre></div>
+
+<p>The core concept is this : static calls return values from their methods, while chained calls update the value of the object they're working on. Which means that an Underscore object don't return its value until you call the <code>-&gt;obtain</code> method on it — until then you can chain as long as you want, it will remain an object.
+The exception are certains properties that are considered <em>breakers</em> and that will return the object's value. An example is <code>Arrays-&gt;get</code>.</p>
+
+<h2>Customizing Underscore</h2>
+
+<p>Underscore.php provides the ability to extend any class with custom functions so go crazy. Don't forget that if you think you have a function anybody could enjoy, do a pull request, let everyone enjoy it !</p>
+
+<div class="highlight"><pre><span class="nx">String</span><span class="o">::</span><span class="na">extend</span><span class="p">(</span><span class="s1">'summary'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">String</span><span class="o">::</span><span class="na">limitWords</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'... — click to read more'</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">String</span><span class="o">::</span><span class="na">from</span><span class="p">(</span><span class="nv">$article</span><span class="o">-&gt;</span><span class="na">content</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">summary</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">()</span>
 </pre></div>
 
 <p>It comes with a config file that allows you to alias the main class to whatever you want, the default being <code>Underscore</code> and the most common probably being <code>__</code> (which is already taken in <strong>Laravel</strong> by the translation helper).
@@ -73,18 +96,24 @@ You can also give custom aliases to all of Underscore's methods, in said config 
 
 <h2>Documentation</h2>
 
-<p>You can find a detailed summary of all classes and methods in the <a href="https://github.com/Anahkiasen/underscore-php/wiki">repo's wiki</a></p>
+<p>You can find a detailed summary of all classes and methods in the <a href="https://github.com/Anahkiasen/underscore-php/wiki/_pages">repo's wiki</a></p>
+
+<p>Note that as Underscore natively extends PHP, it can automatically reference original PHP functions when the context matches. Per example the following will go call the origin <code>array_intersect</code> function. The advantage is obviously that it allows chaining on a lot of otherwise one-off functions or that only work by reference/</p>
+
+<div class="highlight"><pre><span class="nx">Arrays</span><span class="o">::</span><span class="na">diff</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="nv">$array2</span><span class="p">,</span> <span class="nv">$array3</span><span class="p">)</span>
+<span class="nx">Arrays</span><span class="o">::</span><span class="na">from</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">diff</span><span class="p">(</span><span class="nv">$array2</span><span class="p">,</span> <span class="nv">$array3</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">merge</span><span class="p">(</span><span class="nv">$array4</span><span class="p">)</span>
+</pre></div>
 
 <h2>About underscore.php</h2>
 
 <p>There is technically another port of Underscore.js to PHP available <a href="https://github.com/brianhaveri/Underscore.php">on Github</a> — I first discovered it when I saw it was for a time used on Laravel 4. I quickly grew disapoint of what a mess the code was, the lack of updates, and the 1:1 mentality that went behind it.
 This revamped Underscore.php doesn't aim to be a direct port of Underscore.js. It sometimes omits methods that aren't relevant to PHP developers, rename others to match terms that are more common to them, provides a richer syntax and leaves room for future methods to be added all the time — whereas the previous port quickly recoded all JS methods to PHP and left it at that.</p>
       </section>
-      <footer>
-        <p>Project maintained by <a href="https://github.com/Anahkiasen">Anahkiasen</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
-      </footer>
     </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/Anahkiasen">Anahkiasen</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
