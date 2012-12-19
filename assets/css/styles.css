@@ -171,6 +171,9 @@ nav.main > li.active > a:hover, nav.main > li > a:hover {
     margin-right: 0;
   }
 }
+.subnav li.active a {
+  background-color: #c3325f;
+}
 .subnav li a {
   background-color: rgba(195, 50, 95, 0.5);
   color: white;

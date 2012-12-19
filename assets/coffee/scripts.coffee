@@ -33,11 +33,14 @@ $.get './README.md', (file) ->
 
 # Create dynamic navigation ---------------------------------------- /
 
-$('.main li').on 'activate', (li) ->
+$('.main > li').on 'activate', (li) ->
+  li = $(li.target)
+  #if $('ul', li).length
   $('.main ul').hide()
-  li = $('ul', li.currentTarget).slideDown()
+  $('ul', li).slideDown()
 
 for title in $('a[name]')
   text = $(title).attr('name')
+  # $(title).attr('id', text)
   category = $(title).parent().parent().attr('id')
   $('.'+category).append("<li><a href='##{text}'>#{text}</a></li>")

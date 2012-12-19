@@ -39,9 +39,10 @@
     });
   });
 
-  $('.main li').on('activate', function(li) {
+  $('.main > li').on('activate', function(li) {
+    li = $(li.target);
     $('.main ul').hide();
-    return li = $('ul', li.currentTarget).slideDown();
+    return $('ul', li).slideDown();
   });
 
   _ref1 = $('a[name]');
