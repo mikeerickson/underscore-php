@@ -1,0 +1,19 @@
+body, html
+  margin: 0
+  padding: 0
+
+body
+  @extend %noise-block
+  background-color: grey(95)
+  font-family: 'Arvo', $serifFontFamily
+
+#container
+  @extend %container-wide
+  max-width: 90%
+
+pre
+  background-color: darken(#403C3A, 15)
+  padding: 1rem
+
+.breadcrumb
+  margin: 0.5rem 0

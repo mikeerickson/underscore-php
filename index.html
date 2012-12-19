@@ -1,141 +1,69 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Underscore-php by Anahkiasen</title>
+    <title>Underscore.php</title>
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Arvo:300,400,600|Oswald:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="components/bootstrap/docs/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="components/rainbow/themes/tomorrow-night.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Underscore-php</h1>
-        <p>A PHP port of Underscore.js</p>
-        <p class="view"><a href="https://github.com/Anahkiasen/underscore-php">View the Project on GitHub <small>Anahkiasen/underscore-php</small></a></p>
-        <ul>
-          <li><a href="https://github.com/Anahkiasen/underscore-php/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/Anahkiasen/underscore-php/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/Anahkiasen/underscore-php">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>Underscore.php <a href="https://travis-ci.org/Anahkiasen/underscore-php"><img src="https://secure.travis-ci.org/Anahkiasen/underscore-php.png?branch=master" alt="Build Status"></a>
-</h1>
 
-<h2>A redacted port of Underscore.js</h2>
+    <header>
+      <h1>Underscore.php</h1>
+    </header>
 
-<p>Underscore.php is a <em>redacted</em> PHP port of Underscore.js. Its goal is to ease the working and manipulation of arrays, strings and such in PHP development. When I say redacted I mean that all methods were not just imported and converted blatantly — a lot of thought was put into removing methods that were unuseful to PHP developers, changing terms to make them less confusing in a PHP world, and add a lot of new methods and helpers on top of a new elegant syntax.</p>
+    <section id='container'>
+      <nav class='main nav nav-list' data-spy="affix">
+        <li><a href='#readme'>Introduction</a></li>
+        <li>
+          <a href='#Arrays'>Arrays</a>
+          <ul class='subnav nav Arrays'></ul>
+        </li>
+        <li>
+          <a href='#Object'>Object</a>
+          <ul class='subnav nav Object'></ul>
+        </li>
+        <li>
+          <a href='#Number'>Number</a>
+          <ul class='subnav nav Number'></ul>
+        </li>
+        <li>
+          <a href='#Parse'>Parse</a>
+          <ul class='subnav nav Parse'></ul>
+        </li>
+        <li>
+          <a href='#String'>String</a>
+          <ul class='subnav nav String'></ul>
+        </li>
+      </nav>
 
-<h3>Install Underscore</h3>
-
-<p>To install Underscore.php you can either add it via Composer :</p>
-
-<pre><code>"anahkiasen/underscore-php" : "dev-master"
-</code></pre>
-
-<p>Or if you're using the Laravel framework, via the Artisan CLI :</p>
-
-<pre><code>artisan bundle:install underscore
-</code></pre>
-
-<p>And then adding the following to your bundles files :</p>
-
-<pre><code>'underscore' =&gt; array('auto' =&gt; true),
-</code></pre>
-
-<h3>Using Underscore</h3>
-
-<p>It can be used both as a static class, and an Object-Oriented class, so both the following are valid :</p>
-
-<div class="highlight"><pre><span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-
-<span class="c1">// One-off calls to helpers</span>
-<span class="nx">Underscore</span><span class="o">::</span><span class="na">each</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="p">})</span>
-<span class="nx">underscore</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">each</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nv">$value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span> <span class="p">})</span>
-
-<span class="c1">// Or chain calls</span>
-<span class="nx">underscore</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">sort</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="nx">Underscore</span><span class="o">::</span><span class="na">chain</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">filter</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">sort</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</pre></div>
-
-<p>You can also alias Underscore's core classes and call them at any time, this mostly provides syntaxic elegance :</p>
-
-<div class="highlight"><pre><span class="c1">// One-off calls</span>
-<span class="nx">Arrays</span><span class="o">::</span><span class="na">first</span><span class="p">()</span>
-<span class="nx">Object</span><span class="o">::</span><span class="na">methods</span><span class="p">()</span>
-<span class="nx">String</span><span class="o">::</span><span class="na">escape</span><span class="p">()</span>
-
-<span class="c1">// Chained calls</span>
-<span class="nx">Arrays</span><span class="o">::</span><span class="na">from</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">sort</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">toJSON</span><span class="p">()</span>
-</pre></div>
-
-<p>The core concept is this : static calls return values from their methods, while chained calls update the value of the object they're working on. Which means that an Underscore object don't return its value until you call the <code>-&gt;obtain</code> method on it — until then you can chain as long as you want, it will remain an object.
-The exception are certains properties that are considered <em>breakers</em> and that will return the object's value. An example is <code>Arrays-&gt;get</code>.</p>
-
-<p>Note that since all data passed to Underscore is transformed into an object, you can do this sort of things, plus the power of chained methods, it all makes the manipulation of arrays and objects a breeze.</p>
-
-<div class="highlight"><pre><span class="nv">$array</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'foo'</span> <span class="o">=&gt;</span> <span class="s1">'bar'</span><span class="p">);</span>
-<span class="nv">$array</span> <span class="o">=</span> <span class="nx">Arrays</span><span class="o">::</span><span class="na">from</span><span class="p">(</span><span class="nv">$array</span><span class="p">);</span>
-
-<span class="k">echo</span> <span class="nv">$array</span><span class="o">-&gt;</span><span class="na">foo</span> <span class="c1">// Returns 'bar'</span>
-
-<span class="nv">$array</span><span class="o">-&gt;</span><span class="na">bis</span> <span class="o">=</span> <span class="s1">'ter'</span>
-<span class="nv">$array</span><span class="o">-&gt;</span><span class="na">obtain</span><span class="p">()</span> <span class="c1">// Returns array('foo' =&gt; 'bar', 'bis' =&gt; 'ter')</span>
-</pre></div>
-
-<h2>Customizing Underscore</h2>
-
-<p>Underscore.php provides the ability to extend any class with custom functions so go crazy. Don't forget that if you think you have a function anybody could enjoy, do a pull request, let everyone enjoy it !</p>
-
-<div class="highlight"><pre><span class="nx">String</span><span class="o">::</span><span class="na">extend</span><span class="p">(</span><span class="s1">'summary'</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$string</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">String</span><span class="o">::</span><span class="na">limitWords</span><span class="p">(</span><span class="nv">$string</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">'... — click to read more'</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="nx">String</span><span class="o">::</span><span class="na">from</span><span class="p">(</span><span class="nv">$article</span><span class="o">-&gt;</span><span class="na">content</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">summary</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">()</span>
-</pre></div>
-
-<p>It comes with a config file that allows you to alias the main class to whatever you want, the default being <code>Underscore</code> and the most common probably being <code>__</code> (which is already taken in <strong>Laravel</strong> by the translation helper).
-You can also give custom aliases to all of Underscore's methods, in said config file. Just add entries to the <code>aliases</code> option, the key being the alias, and the value the method to point to.</p>
-
-<h2>Documentation</h2>
-
-<p>You can find a detailed summary of all classes and methods in the <a href="https://github.com/Anahkiasen/underscore-php/wiki/_pages">repo's wiki</a></p>
-
-<p>Note that as Underscore natively extends PHP, it can automatically reference original PHP functions when the context matches. Per example the following will go call the origin <code>array_intersect</code> function. The advantage is obviously that it allows chaining on a lot of otherwise one-off functions or that only work by reference/</p>
-
-<div class="highlight"><pre><span class="nx">Arrays</span><span class="o">::</span><span class="na">diff</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="nv">$array2</span><span class="p">,</span> <span class="nv">$array3</span><span class="p">)</span>
-<span class="nx">Arrays</span><span class="o">::</span><span class="na">from</span><span class="p">(</span><span class="nv">$array</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">diff</span><span class="p">(</span><span class="nv">$array2</span><span class="p">,</span> <span class="nv">$array3</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">merge</span><span class="p">(</span><span class="nv">$array4</span><span class="p">)</span>
-</pre></div>
-
-<h2>About underscore.php</h2>
-
-<p>There is technically another port of Underscore.js to PHP available <a href="https://github.com/brianhaveri/Underscore.php">on Github</a> — I first discovered it when I saw it was for a time used on Laravel 4. I quickly grew disapoint of what a mess the code was, the lack of updates, and the 1:1 mentality that went behind it.
-This revamped Underscore.php doesn't aim to be a direct port of Underscore.js. It sometimes omits methods that aren't relevant to PHP developers, rename others to match terms that are more common to them, provides a richer syntax and leaves room for future methods to be added all the time — whereas the previous port quickly recoded all JS methods to PHP and left it at that.</p>
+      <section id='content'>
+        <article id='readme'></article>
+        <article id='Arrays'></article>
+        <article id='Object'></article>
+        <article id='Number'></article>
+        <article id='Parse'></article>
+        <article id='String'></article>
       </section>
-    </div>
-    <footer>
-      <p>Project maintained by <a href="https://github.com/Anahkiasen">Anahkiasen</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-              <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-728496-8");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
+    </section>
 
+    <footer>
+      &copy; 2012 - Maxime Fabre
+    </footer>
+
+    <script src='components/jquery/jquery.min.js'></script>
+    <script src='components/marked/lib/marked.js'></script>
+    <script src='components/rainbow/js/rainbow.min.js'></script>
+    <script src='components/rainbow/js/language/generic.js'></script>
+    <script src='components/rainbow/js/language/php.js'></script>
+    <script src='components/bootstrap/js/bootstrap-affix.js'></script>
+    <script src='components/bootstrap/js/bootstrap-scrollspy.js'></script>
+    <script src='assets/js/scripts.js'></script>
   </body>
 </html>

@@ -1,0 +1,21 @@
+[submodule "docs"]
+	path = docs
+	url = git@github.com:Anahkiasen/underscore-php.wiki.git
+[submodule "components/bootstrap"]
+	path = components/bootstrap
+	url = git@github.com:twitter/bootstrap.git
+[submodule "components/marked"]
+	path = components/marked
+	url = git@github.com:chjj/marked.git
+[submodule "components/jquery"]
+	path = components/jquery
+	url = git@github.com:components/jquery.git
+[submodule "components/cerberus"]
+	path = components/cerberus
+	url = git@github.com:Anahkiasen/cerberus-laravel.git
+[submodule "components/pygments"]
+	path = components/pygments
+	url = git@github.com:pksunkara/pygments.js.git
+[submodule "components/rainbow"]
+	path = components/rainbow
+	url = git@github.com:ccampbell/rainbow.git

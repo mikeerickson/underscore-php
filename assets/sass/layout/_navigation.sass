@@ -1,0 +1,43 @@
+
+// Affixed state --------------------------------------------------- /
+
+.affix
+  top: 0
+  width: 100%
+
+// Main navigation ------------------------------------------------- /
+
+nav.main
+  +border-top-radius(0)
+  +span-columns(2)
+  background-color: white
+  margin-bottom: 2rem
+  li:first-child a
+    +border-top-radius(0)
+  a
+    color: $color-base
+  a:hover, & > li.active > a
+    +border-radius(0)
+    background-color: lighten($color-base, 20)
+    color: white
+  & > li.active > a
+    background-color: lighten($color-base, 10)
+  & > li.active > a:hover, & > li > a:hover
+    background-color: $color-base
+
+// Subnavigations -------------------------------------------------- /
+
+
+.subnav
+  display: none
+  @extend %container-wide
+  margin: 0
+  li
+    +per-row(2)
+    width: 50%
+    margin-right: 0
+    a
+      background-color: fade($color-base, 50)
+      color: white
+      &:hover
+        background-color: $color-base
