@@ -12,6 +12,9 @@ nav.main
   +span-columns(2)
   background-color: white
   margin-bottom: 2rem
+
+  li a
+    @extend %transition
   li:first-child a
     +border-top-radius(0)
   a
@@ -34,6 +37,8 @@ nav.main
   margin: 0
   li
     +per-row(2)
+    +to($wide)
+      +per-row(1)
     width: 50%
     margin-right: 0
     a

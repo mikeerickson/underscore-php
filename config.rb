@@ -1,4 +1,5 @@
 # Folders
+project_path     = "./assets/"
 css_dir         = "css"
 fonts_dir       = "fonts"
 images_dir      = "img"

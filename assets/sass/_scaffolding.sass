@@ -10,10 +10,16 @@ body
 #container
   @extend %container-wide
   max-width: 90%
+  +to($wider)
+    max-width: 100%
 
 pre
   background-color: darken(#403C3A, 15)
   padding: 1rem
 
 .breadcrumb
+  background-color: $color-base
   margin: 0.5rem 0
+  a
+    color: white
+    text-shadow: none

@@ -1,8 +1,12 @@
 header
+  @extend %transition
   @extend %accent-block
   +double-shadow(5px)
   position: relative
   z-index: 5
+
+  &:hover
+    background-color: lighten($color-base, 10)
 
   h1
     color: white
