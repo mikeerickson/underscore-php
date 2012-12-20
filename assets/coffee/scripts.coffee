@@ -63,6 +63,7 @@ for title in $('a[name]')
   namespacedMethod = typeClass + '-' +method
 
   # Namespace function and add navigation element
+  $('a[href=#'+method+']').attr('href', '#'+namespacedMethod)
   $(title).attr('name', namespacedMethod).attr('id', namespacedMethod)
   $('.'+typeClass).append("<li><a href='##{namespacedMethod}'>#{method}</a></li>")
 

@@ -42,6 +42,7 @@
     method = $(title).attr('name');
     typeClass = $(title).parents('article').attr('id');
     namespacedMethod = typeClass + '-' + method;
+    $('a[href=#' + method + ']').attr('href', '#' + namespacedMethod);
     $(title).attr('name', namespacedMethod).attr('id', namespacedMethod);
     $('.' + typeClass).append("<li><a href='#" + namespacedMethod + "'>" + method + "</a></li>");
   }
