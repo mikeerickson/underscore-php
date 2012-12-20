@@ -15,7 +15,7 @@
   $.get('./underscore/README.md', function(file) {
     $('#readme').hide().html(parse(file)).fadeIn();
     return $('body').scrollspy({
-      'offset': 0
+      'offset': 50
     });
   });
 

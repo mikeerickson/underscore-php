@@ -29,7 +29,7 @@ $.get './underscore/README.md', (file) ->
 
   # Turn on ScrollSpy once content is loaded
   $('body').scrollspy
-    'offset': 0
+    'offset': 50
 
 # Load docs files -------------------------------------------------- /
 
