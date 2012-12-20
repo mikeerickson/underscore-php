@@ -2,20 +2,28 @@
 ///////////////////////////// PLACEHOLDERS ///////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-%noise-block
+%block
+  padding: 1rem
+
+%block-dark
+  @extend %block
+  background-color: darken(#403C3A, 5)
+
+%block-noise
+  background-color: grey(95)
   background-image: inline-image('noise.png')
 
-%accent-block
+%block-accent
   background-color: $color-base
-  text-shadow: 0 0.2em 0 fade(black, 25)
   color: white
 
-%big-accent-block
-  @extend %accent-block
-  @extend %noise-block
+%block-hero
+  @extend %block-accent
+  @extend %block-noise
+  @extend %is-relief
   clear: both
   margin: 0
-  padding: 2rem 0
+  padding: 3rem 0
   text-align: center
   text-transform: uppercase
 

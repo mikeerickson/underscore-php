@@ -3,11 +3,11 @@
 //////////////////////////////////////////////////////////////////////
 
 header
+  @extend %block-hero
+  @extend %is-in-front
   @extend %transition
-  @extend %big-accent-block
-  +double-shadow(5px)
-  position: relative
-  z-index: 5
+  text-shadow: 0 0.3em 0 fade(black, 25)
+  +double-shadow(0.5rem)
 
   &:hover
     background-color: lighten($color-base, 10)

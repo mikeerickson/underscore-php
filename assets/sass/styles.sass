@@ -3,13 +3,21 @@
 
 @import ../../components/cerberus/public/import
 
-$color-base: $pink
-$font-condensed: 'Oswald', $sansFontFamily
+$color-base     : $pink
+$font-condensed : 'Oswald', $sansFontFamily
+$font-slab      : 'Arvo', $serifFontFamily
 
 // Scaffolding and modules ----------------------------------------- /
 
-@import placeholders
-@import scaffolding
+@import modules/blocks
+@import modules/nav
+
+@import states/depth
+@import states/active
+
+@import scaffolding/body
+@import scaffolding/code
+@import scaffolding/typography
 
 // Layout ---------------------------------------------------------- /
 

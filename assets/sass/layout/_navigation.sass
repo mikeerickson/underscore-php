@@ -2,29 +2,18 @@
 ///////////////////////////// NAVIGATION /////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-nav.main
+// Remove top border radius
+nav.main, nav.main li:first-child a
   +border-top-radius(0)
+
+nav.main
+  @extend %nav
   +span-columns(2)
-  background-color: white
   margin-bottom: 2rem
 
+  // Affixed block
   &.affix
     top: 0
-
-  li a
-    @extend %transition
-  li:first-child a
-    +border-top-radius(0)
-  a
-    color: $color-base
-  a:hover, & > li.active > a
-    +border-radius(0)
-    background-color: lighten($color-base, 20)
-    color: white
-  & > li.active > a
-    background-color: lighten($color-base, 10)
-  & > li.active > a:hover, & > li > a:hover
-    @extend %accent-block
 
   // Responsive ---------------------------------------------------- /
 
@@ -36,28 +25,21 @@ nav.main
 
 // Subnavigations -------------------------------------------------- /
 
-.subnav
+.nav-sub
+  @extend %nav-sub
   @extend %container-wide
-  display: none
+  @extend %hide
   margin: 0
   li
-    +per-row(2)
-    +to($wide)
-      +per-row(1)
     width: 50%
     margin-right: 0
-    &.active a
-      @extend %accent-block
-    a
-      background-color: fade($color-base, 50)
-      color: white
-      &:hover
-        @extend %accent-block
+    +to($wide)
+      width: 100%
 
 .breadcrumb
-  @extend %accent-block
+  @extend %block-accent
+  @extend %is-relief
   margin: 0.5rem 0
   a
     font-size: 0.9rem
     color: white
-    text-shadow: none
