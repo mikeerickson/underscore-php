@@ -284,3 +284,6 @@ header h1 {
 footer {
   font-size: 1.5rem;
 }
+footer a {
+  color: white;
+}
