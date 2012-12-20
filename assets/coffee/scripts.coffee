@@ -23,7 +23,9 @@ $('.main').affix
 # Load README ------------------------------------------------------ /
 
 $.get './underscore/README.md', (file) ->
-  $('#readme').html parse file
+  $('#readme').hide()
+    .html(parse(file))
+    .fadeIn()
 
   # Turn on ScrollSpy once content is loaded
   $('body').scrollspy
@@ -40,8 +42,9 @@ for page in ['Arrays', 'Number', 'Object', 'Parse', 'String']
 
       # Parse and append file
       file = parse file
-      article = $('#' + page)
+      article = $('#' + page).hide()
         .html("<h1>#{page}</h1>#{file}")
+        .fadeIn()
 
       # Format code blocks
       $('pre code', article)

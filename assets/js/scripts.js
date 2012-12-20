@@ -13,7 +13,7 @@
   });
 
   $.get('./underscore/README.md', function(file) {
-    $('#readme').html(parse(file));
+    $('#readme').hide().html(parse(file)).fadeIn();
     return $('body').scrollspy({
       'offset': 100
     });
@@ -29,7 +29,7 @@
       success: function(file) {
         var article;
         file = parse(file);
-        article = $('#' + page).html("<h1>" + page + "</h1>" + file);
+        article = $('#' + page).hide().html("<h1>" + page + "</h1>" + file).fadeIn();
         $('pre code', article).addClass('lang-php');
         return $('ul', article).addClass('list-unstyled').find('ul').addClass('breadcrumb');
       }
