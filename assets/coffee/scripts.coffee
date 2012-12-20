@@ -72,6 +72,7 @@ for title in $('a[name]')
 
 $('.main > li').on 'activate', (li) ->
   li = $(li.target)
-  if li.has('ul').length
+  if li.has('ul').length or li.text() is 'Introduction'
     $('.main ul').hide()
     $('ul', li).slideDown()
+  else li.parent().parent().addClass('active')

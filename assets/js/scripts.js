@@ -49,9 +49,11 @@
 
   $('.main > li').on('activate', function(li) {
     li = $(li.target);
-    if (li.has('ul').length) {
+    if (li.has('ul').length || li.text() === 'Introduction') {
       $('.main ul').hide();
       return $('ul', li).slideDown();
+    } else {
+      return li.parent().parent().addClass('active');
     }
   });
 
