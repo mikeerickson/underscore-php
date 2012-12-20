@@ -1,9 +1,9 @@
-# Setup Affix ------------------------------------------------------ /
 
-$('.main').affix
-  'offset': 50
+# ////////////////////////////////////////////////////////////////////
+# ///////////////////////////// HELPERS //////////////////////////////
+# ////////////////////////////////////////////////////////////////////
 
-# Load docs files -------------------------------------------------- /
+# Parses a file with Marked ---------------------------------------- /
 
 parse = (file) ->
   file = marked.lexer file
@@ -11,36 +11,63 @@ parse = (file) ->
 
   return file
 
+# ////////////////////////////////////////////////////////////////////
+# ////////////////////////////// SETUP ///////////////////////////////
+# ////////////////////////////////////////////////////////////////////
+
+# Setup Affix ------------------------------------------------------ /
+
+$('.main').affix
+  'offset': 50
+
+# Load README ------------------------------------------------------ /
+
+$.get './underscore/README.md', (file) ->
+  $('#readme').html parse file
+
+  # Turn on ScrollSpy once content is loaded
+  $('body').scrollspy
+    'offset': 100
+
+# Load docs files -------------------------------------------------- /
+
 for page in ['Arrays', 'Number', 'Object', 'Parse', 'String']
   $.ajax
     type: 'GET'
     async: false,
     url: "./docs/#{page}.md"
     success: (file) ->
+
+      # Parse and append file
       file = parse file
-      title = "<h1>#{page}</h1>"
-      $('#'+page).html title+file
-      $('pre code', '#'+page).addClass('lang-php')
-      $('article > ul').addClass('list-unstyled')
-      $('article ul ul').addClass('breadcrumb')
+      article = $('#' + page)
+        .html("<h1>#{page}</h1>#{file}")
 
-$.get './README.md', (file) ->
-  file = parse file
-  $('#readme').html file
+      # Format code blocks
+      $('pre code', article)
+        .addClass('lang-php')
 
-  $('body').scrollspy
-    'offset': 100
+      # Format internal navigations
+      $('ul', article)
+        .addClass('list-unstyled')
+        .find('ul')
+          .addClass('breadcrumb')
 
 # Create dynamic navigation ---------------------------------------- /
+
+for title in $('a[name]')
+
+  # Get function and class
+  method = $(title).attr('name')
+  typeClass = $(title).parents('article').attr('id')
+  namespacedMethod = typeClass + '-' +method
+
+  # Namespace function and add navigation element
+  $(title).attr 'name', namespacedMethod
+  $('.'+typeClass).append("<li><a href='##{namespacedMethod}'>#{method}</a></li>")
 
 $('.main > li').on 'activate', (li) ->
   li = $(li.target)
   #if $('ul', li).length
   $('.main ul').hide()
   $('ul', li).slideDown()
-
-for title in $('a[name]')
-  text = $(title).attr('name')
-  # $(title).attr('id', text)
-  category = $(title).parent().parent().attr('id')
-  $('.'+category).append("<li><a href='##{text}'>#{text}</a></li>")
