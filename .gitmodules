@@ -19,3 +19,6 @@
 [submodule "components/rainbow"]
 	path = components/rainbow
 	url = git://github.com/ccampbell/rainbow.git
+[submodule "underscore"]
+	path = underscore
+	url = git@github.com:Anahkiasen/underscore-php.git
