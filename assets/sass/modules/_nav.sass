@@ -1,4 +1,10 @@
-%nav
+//////////////////////////////////////////////////////////////////////
+////////////////////////////// NAVIGATION ////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+// Main navigation ------------------------------------------------- /
+
+%nav-nav
   a
     @extend %transition
     color: $color-base
@@ -6,15 +12,15 @@
   & > li > a:hover,
   & > li.active > a
     @extend %block-accent
-    @extend %is-active
     @extend %is-relief
 
-%nav-sub
+// Subnavigations -------------------------------------------------- /
 
+%nav-sub
   li a
     @extend %block-accent
     @extend %is-hover
-    color: white
 
-  li.active a, li a:hover
+  li.active a,
+  li a:hover
     background-color: fade($color-base, 80)

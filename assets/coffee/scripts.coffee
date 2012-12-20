@@ -17,7 +17,7 @@ parse = (file) ->
 
 # Setup Affix ------------------------------------------------------ /
 
-$('.main').affix
+$('.nav-nav').affix
   'offset': 50
 
 # Load README ------------------------------------------------------ /
@@ -29,7 +29,7 @@ $.get './underscore/README.md', (file) ->
 
   # Turn on ScrollSpy once content is loaded
   $('body').scrollspy
-    'offset': 100
+    'offset': 0
 
 # Load docs files -------------------------------------------------- /
 
@@ -70,9 +70,9 @@ for title in $('a[name]')
   $(title).attr('name', namespacedMethod).attr('id', namespacedMethod)
   $('.'+typeClass).append("<li><a href='##{namespacedMethod}'>#{method}</a></li>")
 
-$('.main > li').on 'activate', (li) ->
+$('.nav-nav > li').on 'activate', (li) ->
   li = $(li.target)
-  if li.has('ul').length or li.text() is 'Introduction'
-    $('.main ul').hide()
-    $('ul', li).slideDown()
+  if li.has('.nav-sub').length or li.text() is 'Introduction'
+    $('.nav-sub').hide()
+    $('.nav-sub', li).slideDown()
   else li.parent().parent().addClass('active')

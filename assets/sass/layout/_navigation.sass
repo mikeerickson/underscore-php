@@ -3,11 +3,11 @@
 //////////////////////////////////////////////////////////////////////
 
 // Remove top border radius
-nav.main, nav.main li:first-child a
+.nav-nav, .nav-nav li:first-child a
   +border-top-radius(0)
 
-nav.main
-  @extend %nav
+.nav-nav
+  @extend %nav-nav
   +span-columns(2)
   margin-bottom: 2rem
 

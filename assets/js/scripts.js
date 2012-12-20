@@ -8,14 +8,14 @@
     return file;
   };
 
-  $('.main').affix({
+  $('.nav-nav').affix({
     'offset': 50
   });
 
   $.get('./underscore/README.md', function(file) {
     $('#readme').hide().html(parse(file)).fadeIn();
     return $('body').scrollspy({
-      'offset': 100
+      'offset': 0
     });
   });
 
@@ -47,11 +47,11 @@
     $('.' + typeClass).append("<li><a href='#" + namespacedMethod + "'>" + method + "</a></li>");
   }
 
-  $('.main > li').on('activate', function(li) {
+  $('.nav-nav > li').on('activate', function(li) {
     li = $(li.target);
-    if (li.has('ul').length || li.text() === 'Introduction') {
-      $('.main ul').hide();
-      return $('ul', li).slideDown();
+    if (li.has('.nav-sub').length || li.text() === 'Introduction') {
+      $('.nav-sub').hide();
+      return $('.nav-sub', li).slideDown();
     } else {
       return li.parent().parent().addClass('active');
     }
