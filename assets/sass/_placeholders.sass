@@ -1,13 +1,24 @@
+//////////////////////////////////////////////////////////////////////
+///////////////////////////// PLACEHOLDERS ///////////////////////////
+//////////////////////////////////////////////////////////////////////
+
 %noise-block
   background-image: inline-image('noise.png')
 
 %accent-block
-  @extend %noise-block
   background-color: $color-base
-  clear: both
+  text-shadow: 0 0.3em 0 fade(black, 25)
   color: white
+
+%big-accent-block
+  @extend %accent-block
+  @extend %noise-block
+  clear: both
   margin: 0
   padding: 2rem 0
   text-align: center
-  text-shadow: 0 2px 0 fade(black, 25)
   text-transform: uppercase
+
+%lips
+  border-bottom: 1px solid lighten($color-base, 25)
+  border-top: 1px solid $color-base

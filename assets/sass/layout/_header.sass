@@ -1,6 +1,10 @@
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////// HEADER //////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
 header
   @extend %transition
-  @extend %accent-block
+  @extend %big-accent-block
   +double-shadow(5px)
   position: relative
   z-index: 5
@@ -9,8 +13,12 @@ header
     background-color: lighten($color-base, 10)
 
   h1
-    color: white
     font-family: $font-condensed
-    font-weight: 400
+    font-size: 4rem
     margin: 0
-    text-transform: uppercase
+
+  // Responsive ---------------------------------------------------- /
+
+  +to($tablet)
+    h1
+      font-size: 2rem

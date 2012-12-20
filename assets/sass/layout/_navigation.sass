@@ -1,17 +1,15 @@
-
-// Affixed state --------------------------------------------------- /
-
-.affix
-  top: 0
-  width: 100%
-
-// Main navigation ------------------------------------------------- /
+//////////////////////////////////////////////////////////////////////
+///////////////////////////// NAVIGATION /////////////////////////////
+//////////////////////////////////////////////////////////////////////
 
 nav.main
   +border-top-radius(0)
   +span-columns(2)
   background-color: white
   margin-bottom: 2rem
+
+  &.affix
+    top: 0
 
   li a
     @extend %transition
@@ -26,14 +24,21 @@ nav.main
   & > li.active > a
     background-color: lighten($color-base, 10)
   & > li.active > a:hover, & > li > a:hover
-    background-color: $color-base
+    @extend %accent-block
+
+  // Responsive ---------------------------------------------------- /
+
+  +to($tablet)
+    display: none
+
+  +from-to($tablet, $wide)
+    +span-columns(4)
 
 // Subnavigations -------------------------------------------------- /
 
-
 .subnav
-  display: none
   @extend %container-wide
+  display: none
   margin: 0
   li
     +per-row(2)
@@ -42,9 +47,17 @@ nav.main
     width: 50%
     margin-right: 0
     &.active a
-      background-color: $color-base
+      @extend %accent-block
     a
       background-color: fade($color-base, 50)
       color: white
       &:hover
-        background-color: $color-base
+        @extend %accent-block
+
+.breadcrumb
+  @extend %accent-block
+  margin: 0.5rem 0
+  a
+    font-size: 0.9rem
+    color: white
+    text-shadow: none

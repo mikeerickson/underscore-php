@@ -1,13 +1,26 @@
-+establish-baseline
+//////////////////////////////////////////////////////////////////////
+///////////////////////////// SCAFFOLDING ////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+// Baseline --------------------------------------------------------- /
+
++establish-baseline(15px)
++to($tablet)
+  +establish-baseline(18px)
+
+// Body ------------------------------------------------------------ /
 
 body, html
   margin: 0
   padding: 0
 
 body
+  +font-size(1rem)
   @extend %noise-block
   background-color: grey(95)
   font-family: 'Arvo', $serifFontFamily
+
+// Container ------------------------------------------------------- /
 
 #container
   @extend %container-wide
@@ -15,13 +28,7 @@ body
   +to($wider)
     max-width: 100%
 
-pre
-  background-color: darken(#403C3A, 15)
-  padding: 1rem
+// Scaffolding ----------------------------------------------------- /
 
-.breadcrumb
-  background-color: $color-base
-  margin: 0.5rem 0
-  a
-    color: white
-    text-shadow: none
+@import scaffolding/typography
+@import scaffolding/block

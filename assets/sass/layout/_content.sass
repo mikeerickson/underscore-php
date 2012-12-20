@@ -1,3 +1,7 @@
+//////////////////////////////////////////////////////////////////////
+/////////////////////////////// CONTENT //////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
 #content
   +box-shadow(0 0 0 10px fade(black, 5))
   +span-columns(10 omega)
@@ -5,9 +9,20 @@
   background-color: fade(white, 25)
   padding: 3rem
 
+  // Classes ------------------------------------------------------- /
+
   article
     border-top: 1px solid lighten(black, 80)
     margin-top: 2rem
     &:first-child
       margin-top: 0
       border: none
+
+  // Responsive ---------------------------------------------------- /
+
+  +to($tablet)
+    +reset-columns
+    padding: 1rem
+
+  +from-to($tablet, $wide)
+    +span-columns(8 omega)
