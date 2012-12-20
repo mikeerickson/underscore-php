@@ -21,4 +21,4 @@
 	url = git://github.com/ccampbell/rainbow.git
 [submodule "underscore"]
 	path = underscore
-	url = git@github.com:Anahkiasen/underscore-php.git
+	url = git://github.com:Anahkiasen/underscore-php.git
