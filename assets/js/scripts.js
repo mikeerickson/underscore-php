@@ -42,14 +42,16 @@
     method = $(title).attr('name');
     typeClass = $(title).parents('article').attr('id');
     namespacedMethod = typeClass + '-' + method;
-    $(title).attr('name', namespacedMethod);
+    $(title).attr('name', namespacedMethod).attr('id', namespacedMethod);
     $('.' + typeClass).append("<li><a href='#" + namespacedMethod + "'>" + method + "</a></li>");
   }
 
   $('.main > li').on('activate', function(li) {
     li = $(li.target);
-    $('.main ul').hide();
-    return $('ul', li).slideDown();
+    if (li.has('ul').length) {
+      $('.main ul').hide();
+      return $('ul', li).slideDown();
+    }
   });
 
 }).call(this);

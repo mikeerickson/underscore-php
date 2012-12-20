@@ -7,7 +7,7 @@
 
 parse = (file) ->
   file = marked.lexer file
-  file = marked.parser(file)
+  file = marked.parser file
 
   return file
 
@@ -63,11 +63,11 @@ for title in $('a[name]')
   namespacedMethod = typeClass + '-' +method
 
   # Namespace function and add navigation element
-  $(title).attr 'name', namespacedMethod
+  $(title).attr('name', namespacedMethod).attr('id', namespacedMethod)
   $('.'+typeClass).append("<li><a href='##{namespacedMethod}'>#{method}</a></li>")
 
 $('.main > li').on 'activate', (li) ->
   li = $(li.target)
-  #if $('ul', li).length
-  $('.main ul').hide()
-  $('ul', li).slideDown()
+  if li.has('ul').length
+    $('.main ul').hide()
+    $('ul', li).slideDown()

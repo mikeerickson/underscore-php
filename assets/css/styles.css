@@ -38,7 +38,7 @@ header, footer, body {
 
 header, footer, nav.main > li.active > a:hover, nav.main > li > a:hover, .subnav li.active a, .subnav li a:hover, .breadcrumb {
   background-color: #c3325f;
-  text-shadow: 0 0.3em 0 rgba(0, 0, 0, 0.25);
+  text-shadow: 0 0.2em 0 rgba(0, 0, 0, 0.25);
   color: white;
 }
 
