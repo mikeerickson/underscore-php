@@ -57,7 +57,7 @@ header, footer, .nav-nav > li > a:hover, .nav-nav > li.active > a, .nav-nav > li
 header, footer {
   clear: both;
   margin: 0;
-  padding: 3rem 0;
+  padding: 2rem 0;
   text-align: center;
   text-transform: uppercase;
 }
