@@ -12,8 +12,6 @@ preferred_syntax = :sass
 relative_assets  = true
 
 # Extensions
-require 'animate'
 require 'modular-scale'
-require 'compass-normalize'
 require 'rgbapng'
 require 'susy'
