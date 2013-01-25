@@ -33,7 +33,7 @@ $.get './underscore/README.md', (file) ->
 
 # Load docs files -------------------------------------------------- /
 
-for page in ['Arrays', 'Number', 'Object', 'Parse', 'String', 'Functions']
+for page in ['Arrays', 'Number', 'Object', 'String', 'Functions', 'Parse', 'Repository']
   $.ajax
     type: 'GET'
     async: false,

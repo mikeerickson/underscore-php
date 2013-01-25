@@ -19,7 +19,7 @@
     });
   });
 
-  _ref = ['Arrays', 'Number', 'Object', 'Parse', 'String', 'Functions'];
+  _ref = ['Arrays', 'Number', 'Object', 'String', 'Functions', 'Parse', 'Repository'];
   for (_i = 0, _len = _ref.length; _i < _len; _i++) {
     page = _ref[_i];
     $.ajax({
