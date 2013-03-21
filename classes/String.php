@@ -140,6 +140,30 @@ class String
     return substr($string, 0, $slice);
   }
 
+  /**
+   * Slice off the end of a string.
+   */
+  public static function sliceOffEnd($string, $slice)
+  {
+    if ($slice > 0) {
+      $slice *= -1;
+    }
+
+    return substr($string, 0, $slice);
+  }
+
+  /**
+   * Slice off the end of a string.
+   */
+  public static function sliceOffFront($string, $slice)
+  {
+    if ($slice < 0) {
+      $slice *= -1;
+    }
+
+    return substr($string, $slice);
+  }
+
   ////////////////////////////////////////////////////////////////////
   /////////////////////////////// ALTER //////////////////////////////
   ////////////////////////////////////////////////////////////////////

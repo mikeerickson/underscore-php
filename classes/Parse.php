@@ -54,6 +54,7 @@ class Parse
     return $xml;
   }
 
+
   ////////////////////////////////////////////////////////////////////
   //////////////////////////////// CSV ///////////////////////////////
   ////////////////////////////////////////////////////////////////////
@@ -88,6 +89,49 @@ class Parse
     return $array;
   }
 
+
+  /**
+   * Converts data from CSV
+   *
+   * @param  string  $data    The data to parse
+   * @param  boolean $hasHeaders Whether the CSV has headers
+   *
+   * @return mixed
+   */
+  public static function fromCSVFile($file, $hasHeaders = false)
+  {
+
+    // Get the data
+    $file = fopen($file, "r");
+
+    // Get headers
+    if ($hasHeaders) {
+      $headers = fgetcsv($file);
+    } else {
+      $headers = array_keys(fgetcsv($file));
+      rewind($file);
+    }
+
+    // Parse each row of file
+    $row = 0;
+    while (! feof($file)) {
+        $columns = fgetcsv($file);
+
+        if (is_array($columns)) {
+            foreach ($columns as $columnNumber => $column) {
+                $array[$row][$headers[$columnNumber]] = $column;
+            }
+
+            ++$row;
+        }
+    }
+
+    fclose($file);
+
+    return $array;
+  }
+
+
   /**
    * Converts data to CSV
    *
@@ -107,7 +151,7 @@ class Parse
 
     // Fetch headers if requested
     if ($exportHeaders) {
-      $headers = array_keys(ArraysMethods::first($data));
+      $headers = array_keys(Arrays::first($data));
       $csv[] = implode($delimiter, $headers);
     }
 
